@@ -218,6 +218,7 @@ export default function CommentFooter({
               placeholder="Write something..."
               value={replyContent}
               onChange={(e) => setReplyContent(e.target.value)}
+              autoFocus
             ></textarea>
           </div>
           <div className="flex items-center gap-3 justify-end mt-2">

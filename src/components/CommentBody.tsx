@@ -22,6 +22,7 @@ export default function CommentBody({
           onChange={(e) => setEditedContent(e.target.value)}
           rows={4}
           value={editedContent}
+          autoFocus
         ></textarea>
       ) : (
         <p className="text-slate-500">{comment.content}</p>
