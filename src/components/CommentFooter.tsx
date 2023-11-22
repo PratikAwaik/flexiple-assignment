@@ -20,6 +20,7 @@ import deleteIcon from "../assets/delete.svg";
 type CommentFooterProps = {
   comment: IComment;
   editedContent: string;
+  setEditedContent: React.Dispatch<React.SetStateAction<string>>;
   isEditOpen: boolean;
   onEditOpen: () => void;
   onEditClose: () => void;
@@ -28,6 +29,7 @@ type CommentFooterProps = {
 export default function CommentFooter({
   comment,
   editedContent,
+  setEditedContent,
   isEditOpen,
   onEditOpen,
   onEditClose,
@@ -142,21 +144,32 @@ export default function CommentFooter({
     onEditClose();
   };
 
+  const handleCancelEdit = () => {
+    onEditClose();
+    setEditedContent(comment.content);
+  };
+
+  const handleCancelReply = () => {
+    onReplyClose();
+    setReplyContent("");
+  };
+
   return isEditOpen ? (
     <div className="flex items-center gap-3 justify-end mt-2">
       {/* cancel comment button */}
       <button
         type="button"
-        onClick={onEditClose}
-        className="text-slate-700 px-2 py-1 bg-slate-100 rounded-md text-sm hover:bg-slate-300"
+        onClick={handleCancelEdit}
+        className="text-slate-700 px-4 py-1.5 bg-slate-100 rounded-md hover:bg-slate-300"
       >
         Cancel
       </button>
       {/* update comment button */}
       <button
         type="button"
-        className="text-blue-700 px-2 py-1 bg-blue-100 rounded-md text-sm hover:bg-blue-300"
+        className="text-blue-700 px-4 py-1.5 bg-blue-100 rounded-md hover:bg-blue-300 disabled:cursor-not-allowed"
         onClick={handleContentUpdate}
+        disabled={editedContent.trim().length === 0}
       >
         Update
       </button>
@@ -224,15 +237,16 @@ export default function CommentFooter({
           <div className="flex items-center gap-3 justify-end mt-2">
             <button
               type="button"
-              onClick={onReplyClose}
-              className="text-slate-700 px-2 py-1 bg-slate-100 rounded-md text-sm hover:bg-slate-300"
+              onClick={handleCancelReply}
+              className="text-slate-700 px-4 py-1.5 bg-slate-100 rounded-md hover:bg-slate-300"
             >
               Cancel
             </button>
             <button
               type="button"
-              className="text-blue-700 px-2 py-1 bg-blue-100 rounded-md text-sm hover:bg-blue-300"
+              className="text-blue-700 px-4 py-1.5 bg-blue-100 rounded-md hover:bg-blue-300 disabled:cursor-not-allowed"
               onClick={handleCreateComment}
+              disabled={replyContent.trim().length === 0}
             >
               Reply
             </button>

@@ -36,6 +36,7 @@ export default function Comment({comment}: CommentProps) {
           <CommentFooter
             comment={comment}
             editedContent={editedContent}
+            setEditedContent={setEditedContent}
             isEditOpen={isEditOpen}
             onEditOpen={onEditOpen}
             onEditClose={onEditClose}
