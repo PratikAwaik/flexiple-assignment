@@ -88,7 +88,7 @@ function App() {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <a
-        href={`https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize?response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&state=1234&scope=fhirUser Observation.read Observation.search`}
+        href={`https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize?response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&state=1234&scope=fhirUser Observation.read`}
         target="_blank"
         rel="noreferrer"
         className="px-2 py-1 bg-blue-700 text-white rounded-md my-10 self-center"
